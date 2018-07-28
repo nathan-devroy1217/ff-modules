@@ -1,0 +1,9 @@
+Data Modeling and Design Notes
+===============================
+
+- 7/27/18: Created ER diagram schema via draw.io
+  - To view, open in browser
+  - Can add pdf later
+  - TODO: remove duplicate foreign key join conditions for 
+    playerYear --> fantasyTeamYear
+    - Will also need to modify word doc with table creation scripts
