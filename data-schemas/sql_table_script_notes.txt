@@ -1,0 +1,54 @@
+Create table player(
+  id int not null auto_increment,
+  firstName varchar(255) not null,
+  lastName varchar(255) not null,
+  positionKey int not null,
+  primary key (id)
+);
+
+Create table fantasyTeam(
+  teamId int not null auto_increment,
+  teamName varchar(255) not null,
+  owner varchar(255) not null,
+  primary key (teamId)
+);
+
+Create table year(
+  id int not null auto_increment,
+  year int not null,
+  primary key (id)
+);
+
+Create table fantasyTeamYear(
+  yearKey int not null,
+  teamId int not null,
+  rosterId int not null auto_increment,
+  primary key (rosterId),
+  foreign key (teamId) references fantasyTeam (teamId),
+  foreign key (yearKey) references year(id)
+);
+
+Create table playerYear(
+  playerKey int not null,
+  rosterKey int not null,
+  positionKey int not null,
+  nflTeam int not null
+  foreign key (playerKey) references player (id),
+  foreign key (yearKey) references fantasyTeamYear (yearKey),
+  foreign key (rosterKey) references fantasyTeamYear (rosterId),
+  foreign key (positionKey) references playerPosition (id),
+foreign key (nflTeamId) references nflTeam (id)
+);
+
+Create table playerPosition(
+  id int not null auto_increment,
+  positionKey varchar(3) not null,
+  primary key (id)
+);
+
+Create table nflTeam(
+  id int not null auto_increment,
+  name varchar(255) not null,
+  primary key (id)
+);
+
