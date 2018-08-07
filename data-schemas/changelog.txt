@@ -25,3 +25,6 @@ Data Modeling and Design Notes
 - TODO: Check crows feet notation for accuracy
 - TODO: Update scripts for MySQL and set up environment
 - TODO: Populate with test data
+============================================================
+- 08/07/18: Added sql script for table population
+- TODO: Populate with test data
