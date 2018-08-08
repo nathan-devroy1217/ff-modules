@@ -1,8 +1,11 @@
+create database myTestDb;
+use myTestDb;
+
 create table fantasyTeam(
   teamId int not null auto_increment,
   teamName varchar(255) not null,
   owner varchar(255) not null,
-  primary key (id)
+  primary key (teamId)
 );
 
 create table player(
@@ -21,41 +24,8 @@ create table nflTeam(
 
 create table playerPositon(
   id int not null auto_increment,
-  positionKey varchar(3) auto_increment,
+  positionKey varchar(3),
   primary key (id)
-);
-
-create table fantasyTeamWeek(
-  id int not null auto_increment,
-  year int not null,
-  week int not null,
-  teamId int not null,
-  primary key (id)
-);
-
-create table transaction(
-  transactionId int not null auto_increment,
-  teamWeekId int not null,
-  transactionKey varchar(30) not null,
-  tradeSenderId int,
-  tradeReceiverId int,
-  playerId int not null,
-  waiverAddPlayerId int,
-  waiverDropPlayerId int,
-  primary key (transactionId),
-  foreign key (teamWeekId) references fantasyTeamWeek (id)
-);
-
-create table competition(
-  competitionId int not null auto_increment,
-  yearKey int not null,
-  week int not null,
-  homeTeamKey int not null,
-  awayTeamKey int not null,
-  homeTeamScore int not null,
-  awayTeamScore int not null,
-  primary key (competitionId),
-  foreign key (yearKey) references fantasyTeamWeek (week)
 );
 
 create table playerPosition(
@@ -78,42 +48,74 @@ create table draft(
   round int not null,
   year int not null,
   primary key (id),
-  foreign key (round) references idraftRound (round)
+  foreign key (round) references draftRound (round)
 );
 
 create table fantasyTeamYear(
   id int not null auto_increment,
-  teamId int not null,
   year int not null,
+  teamId int not null,
   draftId int not null,
   primary key (id),
   foreign key (teamId) references fantasyTeam (teamId),
-  foreign key (year) references fantasyTeamWeek (year),
   foreign key (draftId) references draft (id)
 );
 
+create table fantasyTeamWeek(
+  teamWeekId int not null auto_increment,
+  teamYearId int not null,
+  week int not null,
+  teamId int not null,
+  primary key (teamWeekId),
+  foreign key (teamYearId) references fantasyTeamYear (id)
+);
+
+create table transaction(
+  transactionId int not null auto_increment,
+  teamWeekId int not null,
+  transactionKey varchar(30) not null,
+  tradeSenderId int,
+  tradeReceiverId int,
+  playerId int not null,
+  waiverAddPlayerId int,
+  waiverDropPlayerId int,
+  primary key (transactionId),
+  foreign key (teamWeekId) references fantasyTeamWeek (teamWeekId)
+);
+
 create table playerYear(
+  id int not null auto_increment,
   playerKey int not null,
   teamYearId int,
   positionKey int not null,
   nflTeamId int not null,
   adp int,
   yearKey int,
+  primary key (id),
   foreign key (playerKey) references player (id),
   foreign key (teamYearId) references fantasyTeamYear (id),
   foreign key (positionKey) references playerPosition (id),
   foreign key (nflTeamId) references nflTeam (id) 
 );
 
-create table rosterWeek(
+create table playerYearRoster(
   id int not null auto_increment,
-  rosterYearKey int not null,
+  playerYearId int not null,
   teamId int not null,
+  teamName varchar(255) not null,
+  year int not null,
+  primary key (id),
+  foreign key (playerYearId) references playerYear (id)
+);
+
+create table rosterWeek(
+  rosterWeekId int not null auto_increment,
+  playerRosterYearId int not null,
+  week int not null,
   teamId int not null,
   playerKey int not null,
-  week int not null,
-  primary key (id),
-  foreign key (rosterYearKey) references playerYear (yearKey)
+  primary key (rosterWeekId),
+  foreign key (playerRosterYearId) references playerYearRoster (id)
 );
 
 create table rosterPlayer(
@@ -132,7 +134,7 @@ create table rosterPlayer(
   rushTd int,
   plays int,
   wrPassTargets int,
-  wrPassRec,
+  wrPassRec int,
   tdReceptions int,
   fgMade int,
   fgAttempt int,
@@ -145,6 +147,19 @@ create table rosterPlayer(
   defSafety int,
   specTeamsTd int,
   primary key (id),
-  foreign key (rosterWeekId) references rosterWeek (teamId)
+  foreign key (rosterWeekId) references rosterWeek (rosterWeekId)
+);
+
+create table competition(
+  competitionId int not null auto_increment,
+  teamWeekId int not null,
+  yearKey int not null,
+  week int not null,
+  homeTeamKey int not null,
+  awayTeamKey int not null,
+  homeTeamScore int not null,
+  awayTeamScore int not null,
+  primary key (competitionId),
+  foreign key (teamWeekId) references fantasyTeamWeek (teamWeekId)
 );
 

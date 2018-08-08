@@ -28,3 +28,7 @@ Data Modeling and Design Notes
 ============================================================
 - 08/07/18: Added sql script for table population
 - TODO: Populate with test data
+============================================================
+- 08/08/18: Completed sql file with database table population
+- Created script to run population for any MySql instance with adequate dependencies
+- TODO: Populate with test data and create insertion scripts
