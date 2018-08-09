@@ -1,5 +1,5 @@
-create database myTestDb;
-use myTestDb;
+create database ffootball;
+use ffootball;
 
 create table fantasyTeam(
   teamId int not null auto_increment,
@@ -19,18 +19,13 @@ create table player(
 create table nflTeam(
   id int not null auto_increment,
   name varchar(255) not null,
-  primary key (id)
-);
-
-create table playerPositon(
-  id int not null auto_increment,
-  positionKey varchar(3),
+  abbreviation varchar(255) not null,
   primary key (id)
 );
 
 create table playerPosition(
   id int not null auto_increment,
-  positionKey varchar(3),
+  positionKey varchar(9),
   primary key (id)
 );
 

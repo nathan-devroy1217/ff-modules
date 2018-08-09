@@ -6,5 +6,8 @@ DATE=$(date +'%Y-%m-%d_%H:%M:%S')
 echo $DATE
 
 mysql -u root -p$PASSWORD < db_builder.sql --verbose
+mysql -u root -p$PASSWORD < insert_nfl_team_data.sql --verbose
+mysql -u root -p$PASSWORD < insert_player_position_data.sql --verbose
+mysql -u root -p$PASSWORD < insert_player_module_test_data.sql --verbose
 
-echo '..........Database build successfully'
+echo '..........Database built successfully'
