@@ -50,7 +50,8 @@ create table fantasyTeamYear(
   id int not null auto_increment,
   year int not null,
   teamId int not null,
-  draftId int not null,
+  draftId int,
+  owner varchar(255) not null,
   primary key (id),
   foreign key (teamId) references fantasyTeam (teamId),
   foreign key (draftId) references draft (id)
@@ -81,14 +82,12 @@ create table transaction(
 create table playerYear(
   id int not null auto_increment,
   playerKey int not null,
-  teamYearId int,
   positionKey int not null,
   nflTeamId int not null,
   adp int,
   yearKey int,
   primary key (id),
   foreign key (playerKey) references player (id),
-  foreign key (teamYearId) references fantasyTeamYear (id),
   foreign key (positionKey) references playerPosition (id),
   foreign key (nflTeamId) references nflTeam (id) 
 );

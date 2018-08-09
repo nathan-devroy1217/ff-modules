@@ -38,3 +38,8 @@ Data Modeling and Design Notes
 - Created .sql files with test data
 - TODO: Continue with test data population, determine foreign key dependencies.
 - TODO: Use dependency model as future reference for data insertion (Java code)
+============================================================
+- 08/09/18: populated player and fantasyTeam data inso .sql file
+- Added complete test data .sql files to db_builder shell script
+- Augmented ERD and tweaked data model to remove FK constraint dependencies
+- TODO: Continue to populate test data
