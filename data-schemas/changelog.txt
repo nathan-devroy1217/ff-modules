@@ -43,3 +43,8 @@ Data Modeling and Design Notes
 - Added complete test data .sql files to db_builder shell script
 - Augmented ERD and tweaked data model to remove FK constraint dependencies
 - TODO: Continue to populate test data
+============================================================
+- 08/10/18: Populated draft module data
+- Created insert-draft module .sql file that populates draft tables
+- Updated ERD
+- TODO: still need to create module that populates test data for fantasy team information

@@ -29,21 +29,21 @@ create table playerPosition(
   primary key (id)
 );
 
-create table draftRound(
-  round int not null auto_increment,
-  pickNum int not null,
-  team int not null,
-  playerId int not null,
-  primary key (round),
-  foreign key (playerId) references player (id)
-);
 
 create table draft(
   id int not null auto_increment,
-  round int not null,
   year int not null,
-  primary key (id),
-  foreign key (round) references draftRound (round)
+  primary key (id)
+);
+
+create table draftRound(
+  id int not null,
+  round int not null,
+  pickNum int not null,
+  team int not null,
+  playerId int not null,
+  year int not null,
+  foreign key (id) references draft (id)
 );
 
 create table fantasyTeamYear(

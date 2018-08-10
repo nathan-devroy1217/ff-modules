@@ -43,7 +43,7 @@ insert into fantasyTeamYear(year, teamId, draftId, owner) values(2012, (select f
 ft where ft.owner = 'William Merkl'), null, 'William Merkl');
 insert into fantasyTeamYear(year, teamId, draftId, owner) values(2017, (select ft.teamId from fantasyTeam
 ft where ft.owner = 'Tom Anderson'), null, 'Tom Anderson');
-insert into fantasyTeamYear(year, teamId, draftId, owner) values(2017, (select ft.teamId from fantasyTeam
+insert into fantasyTeamYear(year, teamId, draftId, owner) values(2016, (select ft.teamId from fantasyTeam
 ft where ft.owner = 'Tom Anderson'), null, 'Tom Anderson');
 insert into fantasyTeamYear(year, teamId, draftId, owner) values(2013, (select ft.teamId from fantasyTeam
 ft where ft.owner = 'Tom Anderson'), null, 'Tom Anderson');
