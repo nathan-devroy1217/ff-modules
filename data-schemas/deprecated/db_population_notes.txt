@@ -5,5 +5,5 @@ Notes for DB Table Inserts:
 2. Insertion of fantasyTeam module
   - Draft Id will be null and needs to be updated after the former is included
 3. Insertion of player module
-4. Insertion of draft module
-  - Need to update fantasyTeamYear --> draftId key
+5. Insertion of draft module
+  - draft module is dependent on player module for player keys

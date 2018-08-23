@@ -48,3 +48,11 @@ Data Modeling and Design Notes
 - Created insert-draft module .sql file that populates draft tables
 - Updated ERD
 - TODO: still need to create module that populates test data for fantasy team information
+=============================================================
+- 08/22/18: Created shell scripts to populate test data
+- Created more sql modules
+- Insight: will be better to move test data inserts onto a Java-based platform
+- With that in mind, I created a "deprecated" directory and stashed all test
+  data modules there. Can reference for future processes as needed.
+- For now, the scope of this repository will be to represent data model and
+  populate test (and future prod, dev, etc...) databases

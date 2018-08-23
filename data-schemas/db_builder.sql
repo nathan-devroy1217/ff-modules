@@ -129,6 +129,7 @@ create table rosterPlayer(
   plays int,
   wrPassTargets int,
   wrPassRec int,
+  wrReceivingYds int,
   tdReceptions int,
   fgMade int,
   fgAttempt int,
