@@ -1,0 +1,58 @@
+Data Modeling and Design Notes
+===============================
+
+- 7/27/18: Created ER diagram schema via draw.io
+  - To view, open in browser
+  - Can add pdf later
+  - TODO: remove duplicate foreign key join conditions for 
+    playerYear --> fantasyTeamYear
+    - Will also need to modify word doc with table creation scripts
+===========================================================
+- 7/29/18: Updated ER schema per below changes
+- removed foreign key on yearKey in fantasyTeamYear
+- removed field yearKey in playerYear
+- Updated word doc
+- Migrated word doc to txt file and removed word doc
+- TODO: Create new relational model
+===========================================================
+- 7/29-7/31/18: Updated ERD
+- Addition of new tables, coverage for additional stat categories
+- TODO: Think of re-implementing MySQL table (lots of changes)
+- Still need transaction schema documentation for ERD
+============================================================
+- 08/06/18: Updated ERD
+- Added all potential tables to ERD
+- TODO: Check crows feet notation for accuracy
+- TODO: Update scripts for MySQL and set up environment
+- TODO: Populate with test data
+============================================================
+- 08/07/18: Added sql script for table population
+- TODO: Populate with test data
+============================================================
+- 08/08/18: Completed sql file with database table population
+- Created script to run population for any MySql instance with adequate dependencies
+- TODO: Populate with test data and create insertion scripts
+============================================================
+- 08/08/18 (2): Began data population
+- Configured .sql files with data constants that can be used across environments
+- Created .sql files with test data
+- TODO: Continue with test data population, determine foreign key dependencies.
+- TODO: Use dependency model as future reference for data insertion (Java code)
+============================================================
+- 08/09/18: populated player and fantasyTeam data inso .sql file
+- Added complete test data .sql files to db_builder shell script
+- Augmented ERD and tweaked data model to remove FK constraint dependencies
+- TODO: Continue to populate test data
+============================================================
+- 08/10/18: Populated draft module data
+- Created insert-draft module .sql file that populates draft tables
+- Updated ERD
+- TODO: still need to create module that populates test data for fantasy team information
+=============================================================
+- 08/22/18: Created shell scripts to populate test data
+- Created more sql modules
+- Insight: will be better to move test data inserts onto a Java-based platform
+- With that in mind, I created a "deprecated" directory and stashed all test
+  data modules there. Can reference for future processes as needed.
+- For now, the scope of this repository will be to represent data model and
+  populate test (and future prod, dev, etc...) databases
