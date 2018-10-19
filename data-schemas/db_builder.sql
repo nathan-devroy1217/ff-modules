@@ -5,7 +5,8 @@ create table fantasyTeam(
   teamId int not null auto_increment,
   teamName varchar(255) not null,
   owner varchar(255) not null,
-  primary key (teamId)
+  primary key (teamId),
+  constraint uniq_team unique (teamName, owner)
 );
 
 create table player(
@@ -13,7 +14,8 @@ create table player(
   firstName varchar(255) not null,
   lastName varchar(255) not null,
   positionKey int not null,
-  primary key (id)
+  primary key (id),
+  constraint uniq_player unique (firstName, lastName)
 );
 
 create table nflTeam(
