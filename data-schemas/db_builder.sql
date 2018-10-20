@@ -5,8 +5,11 @@ create table fantasyTeam(
   teamId int not null auto_increment,
   teamName varchar(255) not null,
   owner varchar(255) not null,
+  year int not null,
+  insertDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updateDateTime DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   primary key (teamId),
-  constraint uniq_team unique (teamName, owner)
+  constraint uniq_team unique (teamName, owner, year)
 );
 
 create table player(
