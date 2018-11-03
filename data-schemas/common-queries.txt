@@ -1,0 +1,2 @@
+#Query to grab draft data in readable format - tweak as needed
+select dr.picknum, p.firstname, p.lastname, dr.playerid, dr.year, dr.round, ft.teamName, ft.owner from draftRound dr, player p, fantasyTeam ft where dr.playerId = p.id and dr.team = ft.teamId and dr.year = 2018 and owner = "Nathan Devroy" order by dr.picknum asc;

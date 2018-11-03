@@ -1,6 +1,7 @@
 create database ffootball;
 use ffootball;
 
+#java component complete
 create table fantasyTeam(
   teamId int not null auto_increment,
   teamName varchar(255) not null,
@@ -12,6 +13,7 @@ create table fantasyTeam(
   constraint uniq_team unique (teamName, owner, year)
 );
 
+#java component complete
 create table player(
   id int not null auto_increment,
   firstName varchar(255) not null,
@@ -21,6 +23,7 @@ create table player(
   constraint uniq_player unique (firstName, lastName)
 );
 
+#populate in script... complete
 create table nflTeam(
   id int not null auto_increment,
   name varchar(255) not null,
@@ -28,19 +31,22 @@ create table nflTeam(
   primary key (id)
 );
 
+#populate in script... complete
 create table playerPosition(
   id int not null auto_increment,
   positionKey varchar(9),
   primary key (id)
 );
 
-
+#java component complete
 create table draft(
   id int not null auto_increment,
   year int not null,
-  primary key (id)
+  primary key (id),
+  constraint uniq_year unique (year)
 );
 
+#java component complete
 create table draftRound(
   id int not null,
   round int not null,
@@ -48,7 +54,8 @@ create table draftRound(
   team int not null,
   playerId int not null,
   year int not null,
-  foreign key (id) references draft (id)
+  foreign key (id) references draft (id),
+  constraint uniq_vals unique (round, pickNum, team, playerId, year)
 );
 
 create table fantasyTeamYear(

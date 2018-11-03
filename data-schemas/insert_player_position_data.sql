@@ -6,3 +6,4 @@ insert into playerPosition(positionKey) values('WR');
 insert into playerPosition(positionKey) values('TE'); 
 insert into playerPosition(positionKey) values('K'); 
 insert into playerPosition(positionKey) values('DEF/ST'); 
+insert into playerPosition(positionKey) values('Other');
