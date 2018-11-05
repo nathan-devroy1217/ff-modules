@@ -7,10 +7,11 @@ create table fantasyTeam(
   teamName varchar(255) not null,
   owner varchar(255) not null,
   year int not null,
+  nickname varchar(10) not null,
   insertDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updateDateTime DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   primary key (teamId),
-  constraint uniq_team unique (teamName, owner, year)
+  constraint uniq_team unique (teamName, owner, year, nickname)
 );
 
 #java component complete
@@ -58,6 +59,7 @@ create table draftRound(
   constraint uniq_vals unique (round, pickNum, team, playerId, year)
 );
 
+#java component complete
 create table fantasyTeamYear(
   id int not null auto_increment,
   year int not null,
@@ -66,16 +68,19 @@ create table fantasyTeamYear(
   owner varchar(255) not null,
   primary key (id),
   foreign key (teamId) references fantasyTeam (teamId),
-  foreign key (draftId) references draft (id)
+  foreign key (draftId) references draft (id),
+  constraint uniq_vals unique (year, teamId, draftId, owner)
 );
 
+#java component complete
 create table fantasyTeamWeek(
   teamWeekId int not null auto_increment,
   teamYearId int not null,
   week int not null,
   teamId int not null,
   primary key (teamWeekId),
-  foreign key (teamYearId) references fantasyTeamYear (id)
+  foreign key (teamYearId) references fantasyTeamYear (id),
+  constraint uniq_vals unique (teamYearId, week, teamId)
 );
 
 create table transaction(
@@ -88,7 +93,9 @@ create table transaction(
   waiverAddPlayerId int,
   waiverDropPlayerId int,
   primary key (transactionId),
-  foreign key (teamWeekId) references fantasyTeamWeek (teamWeekId)
+  foreign key (teamWeekId) references fantasyTeamWeek (teamWeekId),
+  constraint uniq_vals unique (teamWeekId, transactionKey, tradeSenderId, tradeReceiverId, playerId, waiverAddPlayerId,
+  waiverDropPlayerId)
 );
 
 create table playerYear(
